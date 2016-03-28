@@ -203,8 +203,13 @@ nmap gp `[v`]
 vnoremap > >gv
 vnoremap < <gv
 
+" To save instead of :w
+noremap <C-Z> :update<CR>
+vnoremap <C-Z> <C-C>:update<CR>
+inoremap <C-Z> <C-O>:update<CR>
+
 " This is for opening new tabs or
-" switching between tabs {
+" switching between tabs
 nnoremap <F2> :tabprevious<CR>
 nnoremap <F3> :tabnext<CR>
 nnoremap <C-t> :tabnew<CR>
@@ -212,20 +217,27 @@ inoremap <F2> <Esc>:tabprevious<CR>i
 inoremap <F3> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
 
-
 " ctrl-I to switch between vertical or
-" horizontal splitted windows {
+" horizontal splitted windows
 map <C-I> <C-W><C-W>
 
-" vim explorer {
-map <F4> :!ls<CR>:e 
-
+" vim explorer
+map <F4> :!ls<CR>:e
 
 " Maps Alt-[h,j,k,l] to resizing a window split
 noremap <silent> <A-h> <C-w><<esc>
 noremap <silent> <A-k> <C-W>-<esc>
 noremap <silent> <A-j> <C-W>+<esc>
 noremap <silent> <A-l> <C-w>><esc>
+
+" TO move is selection mode
+inoremap <C-h> <C-w>h
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+" make easier to make esc
+inoremap éé <esc>
 
 " Move up and down lines or blocks
 nnoremap <A-S-j> :m .+1<CR>==
