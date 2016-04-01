@@ -13,5 +13,5 @@ If you know this guy just let me know by sedding me a message PLEASE !!
 
 Ispired by @MaxSt. That .vimrc is incredible, almost perfect. I have added some features.
 You can diff with @MaxSt one [here](https://github.com/MaxSt/dotfiles/blob/master/vimrc).
-I wish that <C-h> will work soon on @Neovim for moving the cursor left in insert mode.
+I wish that `<C-h>` will work soon on @Neovim for moving the cursor left in insert mode.
 That's the only work left to be done on this .vimrc according to my needs and maybe some Meteor.js support.
