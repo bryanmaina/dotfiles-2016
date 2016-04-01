@@ -140,7 +140,7 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
   " Hack to get C-h working in neovim
-  nmap <BS> <C-W>h
+  " nmap <BS> <C-W>h
 
   set ttimeout
   set ttimeoutlen=0
@@ -230,14 +230,16 @@ noremap <silent> <A-k> <C-W>-<esc>
 noremap <silent> <A-j> <C-W>+<esc>
 noremap <silent> <A-l> <C-w>><esc>
 
+" emacs insert bindings
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+
 " TO move is selection mode
-inoremap <C-h> <C-w>h
+inoremap <C-d> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
-" make easier to make esc
-inoremap éé <esc>
 
 " Move up and down lines or blocks
 nnoremap <A-S-j> :m .+1<CR>==
@@ -267,13 +269,22 @@ vnoremap <Leader>P "+P
 "Make Y behave Like D or C
 noremap Y y$
 
+" Gif config
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
 "J and K to Jump to beginning of Line
 noremap J +
 noremap K -
 "to Join lines
-noremap <leader>j J
+"noremap <leader>j J
 "to show help under cursor
-noremap <leader>k K
+"noremap <leader>k K
+
+" make easier to make esc
+inoremap éé <esc>
 
 "write file with gs
 noremap gs :w<CR>
@@ -285,7 +296,7 @@ noremap <silent> <leader>e /<c-r>//e<cr>:let @/='<c-r>/'<cr>
 command! VimEdit :edit ~/.vimrc
 noremap g. :VimEdit<CR>
 
-nnoremap <silent> <leader>l :set spell!<CR>
+"nnoremap <silent> <leader>l :set spell!<CR>
 
 "Opens the help page on the current window if cursor is in a help page or opens another tab if it's not
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
