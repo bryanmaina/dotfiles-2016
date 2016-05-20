@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
   let g:flatcolor_termcolors=16
   set background=dark
 
+"Plug 'blueyed/vim-diminactive'
+
   " " ctrlp (open file with fuzzy search)
   " Plug 'ctrlpvim/ctrlp.vim'
   " let g:ctrlp_map = '<leader>t'

@@ -29,7 +29,7 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#exec --no-startup-id bash -c "i3lock -c 000000"
+exec --no-startup-id bash -c "i3lock -c 000000"
 exec --no-stratup-id bash -c "compton"
 
 

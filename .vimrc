@@ -82,8 +82,8 @@ set winminheight=0                                            " Windows can be 0
 set scrolljump=5                                              " Lines to scroll when cursor leaves screen
 set scrolloff=0                                               " Minimum lines to keep above and below cursor
 
-set nocursorline                                                " highlight current line
-set nocursorcolumn                                            " highlight current column
+set cursorline                                              " highlight current line
+set cursorcolumn                                            " highlight current column
 
 set laststatus=2                                              " Always show the statusline
 
@@ -140,7 +140,7 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
   " Hack to get C-h working in neovim
-  " nmap <BS> <C-W>h
+  imap <BS> <C-W>h
 
   set ttimeout
   set ttimeoutlen=0
@@ -207,14 +207,28 @@ vnoremap < <gv
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
 inoremap <C-Z> <C-O>:update<CR>
+" To quit instead of :q
+noremap <C-Q> :q<CR>
+vnoremap <C-Q> <C-C>:q<CR>
+inoremap <C-Q> <C-O>:q<CR>
 
 " This is for opening new tabs or
 " switching between tabs
-nnoremap <F2> :tabprevious<CR>
-nnoremap <F3> :tabnext<CR>
+nnoremap <A-&> 1gt
+nnoremap <A-é> 2gt
+nnoremap <A-"> 3gt
+nnoremap <A-'> 4gt
+nnoremap <A-(> 5gt
+nnoremap <A-§> 6gt
+nnoremap <A-è> 7gt
+nnoremap <A-!> 8gt
+nnoremap <A-ç> 9gt
+nnoremap <A-à> 10gt
+"nnoremap <C-tab> :tabprevious<CR>
+"nnoremap <F3> :tabnext<CR>
 nnoremap <C-t> :tabnew<CR>
-inoremap <F2> <Esc>:tabprevious<CR>i
-inoremap <F3> <Esc>:tabnext<CR>i
+"inoremap <F2> <Esc>:tabprevious<CR>i
+"inoremap <F3> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
 
 " ctrl-I to switch between vertical or
@@ -236,10 +250,10 @@ inoremap <c-e> <esc>A
 
 " TO move is selection mode
 inoremap <C-d> <Left>
+inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-
 
 " Move up and down lines or blocks
 nnoremap <A-S-j> :m .+1<CR>==
