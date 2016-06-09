@@ -38,6 +38,12 @@ alias League_of_Legends='cd /home/dumy/.wine32/drive_c/Riot\ Games/League\ of\ L
 alias ls='ls --color=auto'
 alias v='nvim'
 
+# Getting the weather of any city
+wego ()
+{
+  curl http://wttr.in/"$1"
+}
+
 # ex - archive extractor
 # usage: ex <file>
 ex ()
