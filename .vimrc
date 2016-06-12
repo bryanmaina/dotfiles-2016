@@ -5,6 +5,31 @@
 " ============================================================================
 syntax on
 
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
+
+" identation for python files
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js
+    \ set filetype=javascript |
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+" identation for html and css files
+au BufRead,BufNewFile *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
 set virtualedit=block
 set nojoinspaces
 set expandtab smarttab
