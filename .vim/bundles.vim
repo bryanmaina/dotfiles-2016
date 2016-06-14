@@ -54,7 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-multiple-cursors'
 
   "YouCompleteMe (Code Completion)
-    Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+    Plug 'Valloric/YouCompleteMe', {'do': './install.py --all'}
     let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
     let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
     let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
@@ -136,6 +136,8 @@ call plug#begin('~/.vim/plugged')
     autocmd! BufWritePost *.jsx Neomake
   endif
 
+  "vimproc
+  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
   " Vim-table-mode
   Plug 'dhruvasagar/vim-table-mode'

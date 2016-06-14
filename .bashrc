@@ -68,6 +68,14 @@ ex ()
   fi
 }
 
+#convert audios
+webmTOmp4 () {
+  ffmpeg -i "$1".webm -qscale 0 "$1".mp4
+}
+mp4TOmp3 () {
+  ffmpeg -i "$1".mp4 "$1".mp3
+}
+
 
 #return value visualisation
  PS1="\$(if [[ \$? == 0 ]]; then echo \"\[\033[34m\]\"; else echo \"\[\033[31m\]\"; fi)\342\226\210\342\226\210 [ \W ] \[\033[0;31m\] [ \t ]\$(__git_ps1 ' (%s)')\n\[\033[m\]\342\226\210\342\226\210 "
