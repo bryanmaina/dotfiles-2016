@@ -5,8 +5,22 @@
 " ============================================================================
 syntax on
 
+" if has('patch-7.4.1778')
+"   set guicolors
+" endif
+" if has('nvim')
+"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
+
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+
+" disable synaptic scoll in vim
+augroup scroll
+    au!
+    au  VimEnter * :silent !synclient VertEdgeScroll=0
+    au  VimLeave * :silent !synclient VertEdgeScroll=1
+augroup END
 
 " identation for python files
 au BufNewFile,BufRead *.py
@@ -25,7 +39,7 @@ au BufNewFile,BufRead *.js
     \ set shiftwidth=2
 
 " identation for html and css files
-au BufRead,BufNewFile *.html, *.css
+au BufRead,BufNewFile *.html; *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
@@ -47,7 +61,7 @@ endif
 set foldmethod=indent
 set nofoldenable
 set synmaxcol=1000
-set mouse=a
+set mouse=c
 set report=0
 set encoding=utf-8
 set completeopt=longest,menu,preview
@@ -146,7 +160,8 @@ endif
 " ============================================================================
 if has('nvim')
   " set poython host (default would be python3)
-  "let g:python_host_prog='/usr/bin/python2'
+  let g:python_host_prog='/usr/bin/python2.7'
+  let g:python3_host_prog = '/usr/bin/python3.5'
   highlight TermCursor ctermbg=1 guibg=#ff6767
 
   " Terminal settings

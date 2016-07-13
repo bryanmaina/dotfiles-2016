@@ -36,6 +36,7 @@ alias wine32='env WINEARCH=win32 WINEPREFIX="/home/dumy/.wine32" wine'
 alias League_of_Legends='cd /home/dumy/.wine32/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/ && wine32 rads_user_kernel.exe run lol_launcher $(ls ../projects/lol_launcher/releases/) LoLLauncher.exe'
 
 alias ls='ls --color=auto'
+
 alias v='nvim'
 
 # Getting the weather of any city

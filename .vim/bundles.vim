@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-multiple-cursors'
 
   "YouCompleteMe (Code Completion)
+    "Plug 'Valloric/YouCompleteMe'
     Plug 'Valloric/YouCompleteMe', {'do': './install.py --all'}
     let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
     let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
@@ -64,8 +65,8 @@ call plug#begin('~/.vim/plugged')
     let g:ycm_add_preview_to_completeopt=0
     let g:ycm_confirm_extra_conf=0
     set completeopt-=preview
-    let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+    "let g:ycm_key_list_select_completion = ['<C-v>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-b>', '<Up>']
     
     " Goto definition with F3
     map <F3> :YcmCompleter GoTo<CR>
@@ -113,7 +114,7 @@ call plug#begin('~/.vim/plugged')
     endif
   endfunction
 
-  Plug 'cohama/lexima.vim' "(auto-close chars)
+  Plug 'cohama/lexima.vim' "auto-close chars)
 
   Plug 'mbbill/undotree', {'on': 'UndotreeToggle'} " (Undo Tree)
   noremap <leader>u :UndotreeToggle<Cr>
@@ -121,6 +122,8 @@ call plug#begin('~/.vim/plugged')
   "Neomake (async make/lint)
   Plug 'benekastah/neomake'
   let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_python_enabled_makers = ['pylint']
+  let g:neomake_python_pylint_exe = 'pylint2'
 
   let g:neomake_warning_sign = {
       \ 'text': '?',
@@ -149,8 +152,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'wavded/vim-stylus'
 
   " syntastic
-  Plug 'scrooloose/syntastic'
-  let g:syntastic_jade_checkers = ['jade_lint']
+    Plug 'scrooloose/syntastic'
+    let g:syntastic_python_python_use_codec=1
+    let g:syntastic_jade_checkers = ['jade_lint']
 
 
   " Tabular (text filtering and alignment (:Tab /[ =,... ]))
@@ -291,10 +295,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'sheerun/vim-polyglot'
 
   " deoplete (async completion)
-   Plug 'Shougo/deoplete.nvim'
+  function! DoRemote(arg)
+    UpdateRemotePlugins
+  endfunction
+  Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
   " Plug 'Shougo/neco-syntax'
   " Plug 'Shougo/neoinclude.vim'
-   let g:deoplete#enable_at_startup = 1
+  "  let g:deoplete#enable_at_startup = 1
   " set completeopt+=menuone
 
   " supertab (tab complete/tab insert)
