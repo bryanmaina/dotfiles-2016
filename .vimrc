@@ -160,8 +160,8 @@ endif
 " ============================================================================
 if has('nvim')
   " set poython host (default would be python3)
-  let g:python_host_prog='/usr/bin/python2.7'
-  let g:python3_host_prog = '/usr/bin/python3.5'
+  "let g:python_host_prog='/usr/bin/python2.7'
+  let g:python_host_prog = '/usr/bin/python'
   highlight TermCursor ctermbg=1 guibg=#ff6767
 
   " Terminal settings
