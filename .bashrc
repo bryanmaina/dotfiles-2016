@@ -6,10 +6,11 @@
 [[ $- != *i* ]] && return
 
 export VISUAL="nvim"
-export BROWSER=/usr/bin/firefox-developer
+export BROWSER=/usr/bin/chromium
 export AWT_TOOLKIT=XToolkit
 export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
 export XDG_CONFIG_HOME="/home/dumy/.config/"
+export ANDROID_HOME="/opt/android-sdk"
 #export PATH="$PATH:$HOME/.node/bin"
 
 if which ruby >/dev/null && which gem >/dev/null; then

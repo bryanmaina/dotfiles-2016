@@ -45,13 +45,20 @@ call plug#begin('~/.vim/plugged')
   "   \ }
   " endif
 
+
   Plug 'jimmyhchan/dustjs.vim'
 
+  " fuzzy finder
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
   nmap <leader>t :FZF<CR>
   set rtp+=~/.fzf
 
+  " mutiple cursors
   Plug 'terryma/vim-multiple-cursors'
+
+  " typescript auto complation
+  Plug 'Quramy/tsuquyomi'
+  let g:tsuquyomi_disable_quickfix = 1
 
   "YouCompleteMe (Code Completion)
     "Plug 'Valloric/YouCompleteMe'
@@ -67,7 +74,7 @@ call plug#begin('~/.vim/plugged')
     set completeopt-=preview
     "let g:ycm_key_list_select_completion = ['<C-v>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-b>', '<Up>']
-    
+
     " Goto definition with F3
     map <F3> :YcmCompleter GoTo<CR>
 
@@ -154,7 +161,7 @@ call plug#begin('~/.vim/plugged')
   " syntastic
     Plug 'scrooloose/syntastic'
     let g:syntastic_python_python_use_codec=1
-    let g:syntastic_jade_checkers = ['jade_lint']
+    let g:syntastic_jade_checkers = ['jade_lint', 'tsuquyomi']
 
 
   " Tabular (text filtering and alignment (:Tab /[ =,... ]))
