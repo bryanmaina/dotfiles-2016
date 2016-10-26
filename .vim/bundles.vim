@@ -382,7 +382,6 @@ call plug#begin('~/.vim/plugged')
   autocmd FileType tex,bib noremap <buffer> <space>v :VimtexView<cr>
   autocmd FileType tex,bib noremap <buffer> <space>t :VimtexTocOpen<cr>
 
-
 call plug#end()
 filetype plugin indent on
 

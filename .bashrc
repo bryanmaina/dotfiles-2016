@@ -2,16 +2,20 @@
 # ~/.bashrc
 #
 
+# https://s3.amazonaws.com/udacity-hosted-downloads/lesson1.zip
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 export VISUAL="nvim"
-export BROWSER=/usr/bin/chromium
+export BROWSER="/usr/bin/chromium"
 export AWT_TOOLKIT=XToolkit
 export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
 export XDG_CONFIG_HOME="/home/dumy/.config/"
 export ANDROID_HOME="/opt/android-sdk"
 #export PATH="$PATH:$HOME/.node/bin"
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
 
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
@@ -34,7 +38,7 @@ alias np='nano PKGBUILD'
 alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo pacman -Syyuu  &&
 sudo pacman -Suu'
 alias wine32='env WINEARCH=win32 WINEPREFIX="/home/dumy/.wine32" wine'
-alias League_of_Legends='cd /home/dumy/.wine32/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/ && wine32 rads_user_kernel.exe run lol_launcher $(ls ../projects/lol_launcher/releases/) LoLLauncher.exe'
+alias League_of_Legends='cd /home/dumy/.PlayOnLinux/wineprefix/LeagueOfLegends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/ && wine32 rads_user_kernel.exe run lol_launcher $(ls ../projects/lol_launcher/releases/) LoLLauncher.exe'
 
 alias ls='ls --color=auto'
 

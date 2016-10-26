@@ -6,12 +6,13 @@
 !----------------------------------------------------------------------
 
 Xft.dpi: 96
-Xft.antialias: 1
+Xft.antialias: true
 Xft.rgba: rgb
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
-Xft.hinting: 2
-Xft.hintstyle: hintfull
+Xft.hinting: true
+Xft.hintstyle: hintlight
+/* Xft.hintstyle: hintfull */
 
 !Xcursor.theme:	 Neutral
 font: -xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1

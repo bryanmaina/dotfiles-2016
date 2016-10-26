@@ -196,6 +196,7 @@ for_window [class="MPlayer"] floating enable; focus mode_toggle; move right 525p
 for_window [class="MPlayer"] move scratchpad
 for_window [class="MPlayer"] scratchpad show
 #for_window [class="MPlayer"] floating enable; focus mode_toggle; move scratchpad; move right 525px,move down 290px
+for_window [class="feh"] floating enable
 
 #mpv player
 for_window [class="mpv"] floating enable, move right 510px,move down 275px, move scratchpad, scratchpad show
@@ -236,7 +237,7 @@ exec --no-startup-id "bash ~/.wallpaper"
 #exec feh --bg-fill --randomize ~/Images/wallpaper/
 #exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/california'
 #exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/gtimer'
+#exec --no-startup-id i3-msg 'workspace 7; exec /usr/bin/gtimer'
 for_window [class="Gtimer"] floating enable
 
-exec --no-startup-id 'workspace 5;  exec /usr/bin/qtodotxt'
+#exec --no-startup-id 'workspace 5;  exec /usr/bin/qtodotxt'

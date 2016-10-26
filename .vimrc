@@ -12,6 +12,11 @@ syntax on
 "   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " endif
 
+" python scripts execution
+imap <F32> <Esc>:!python 
+nmap <F32> :!python 
+vmap <F32> :!python 
+
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
@@ -251,6 +256,9 @@ inoremap <C-Z> <C-O>:update<CR>
 noremap <C-Q> :q<CR>
 vnoremap <C-Q> <C-C>:q<CR>
 inoremap <C-Q> <C-O>:q<CR>
+
+" making new line in insert mode
+imap <A-Cr> <esc>o
 
 " This is for opening new tabs or
 " switching between tabs
