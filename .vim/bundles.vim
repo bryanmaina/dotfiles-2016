@@ -12,7 +12,17 @@ call plug#begin('~/.vim/plugged')
   " Colorscheme
   Plug 'MaxSt/FlatColor'
   let g:flatcolor_termcolors=16
-  set background=dark
+  " set background=dark
+  Plug 'tyrannicaltoucan/vim-deep-space'
+  " set background=dark
+  Plug 'junegunn/seoul256.vim'
+  " seoul256 (light):
+  " Range: 252 (darkest) ~ 256 (lightest)
+  " Default: 253
+  let g:seoul256_background = 255
+  Plug 'NLKNguyen/papercolor-theme'
+  set t_Co=256   " This is may or may not needed.
+  set background=light
 
 "Plug 'blueyed/vim-diminactive'
 
@@ -90,7 +100,7 @@ call plug#begin('~/.vim/plugged')
   " lightline  (StatusBar)
   Plug 'itchyny/lightline.vim'
   let g:lightline = {
-    \'colorscheme': 'flatcolor',
+    \'colorscheme': 'PaperColor',
     \'active': {
       \'left': [ [ 'mode' ],
       \          [ 'readonly', 'filename', 'modified', 'parinfermode' ] ]
@@ -101,7 +111,9 @@ call plug#begin('~/.vim/plugged')
       \'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
     \},
     \'component_function': {
-      \'parinfermode': 'LightLineParinferMode'
+      \'parinfermode': 'LightLineParinferMode',
+    \   'filetype': 'MyFiletype',
+    \   'fileformat': 'MyFileformat'
     \},
     \'separator': { 'left': '▓', 'right': '▓' },
     \'subseparator': { 'left': '❱', 'right': '❱' }
@@ -119,6 +131,14 @@ call plug#begin('~/.vim/plugged')
     else
       return ""
     endif
+  endfunction
+
+  function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  endfunction
+
+  function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
   endfunction
 
   Plug 'cohama/lexima.vim' "auto-close chars)
@@ -214,6 +234,13 @@ call plug#begin('~/.vim/plugged')
   " " IndentLine (Show vertical line at each indent Level)
   " let g:indentLine_char = '┆'
   " Plug 'Yggdroot/indentLine'
+
+  " vim-css-color
+  Plug 'ap/vim-css-color'
+
+  " chrisbra/Colorizer
+  Plug 'chrisbra/Colorizer'
+  let g:colorizer_auto_color = 1
 
   "Emmet (Zen Coding)
   Plug 'mattn/emmet-vim'
@@ -343,6 +370,13 @@ call plug#begin('~/.vim/plugged')
   let NERDTreeShowLineNumbers=1
   noremap \ :NERDTreeToggle<CR>
 
+  Plug 'rbgrouleff/bclose.vim'
+  Plug 'francoiscabrol/ranger.vim'
+  map <leader>c :RangerWorkingDirectory<CR>
+
+  " dev icons for neerdtree and powerline, etc
+  Plug 'ryanoasis/vim-devicons'
+
   " "Vim for writing
   " Plug 'reedes/vim-pencil', {'for': ['markdown','mkd','text']}
   " augroup pencil
@@ -385,7 +419,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 filetype plugin indent on
 
-colorscheme flatcolor
+" colorscheme flatcolor
+" colorscheme seoul256
+colorscheme PaperColor
 
 hi link GitGutterAdd DiffAdd
 hi link GitGutterDelete DiffDelete

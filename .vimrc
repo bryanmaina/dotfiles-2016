@@ -5,12 +5,12 @@
 " ============================================================================
 syntax on
 
-" if has('patch-7.4.1778')
-"   set guicolors
-" endif
-" if has('nvim')
-"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" endif
+if has('patch-7.4.1778')
+  set guicolors
+endif
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 " python scripts execution
 imap <F32> <Esc>:!python 
@@ -202,11 +202,13 @@ if has('gui_running')
   set guioptions-=e
 
   if has("gui_gtk2")
-      set guifont=Hack\ 11
+    set guifont=Hack\ 11
   elseif has("gui_mac")
-      set guifont=Hack:11
+    set guifont=Hack:11
   elseif has("gui_win32") || has('win64')
-      set guifont=Hack:11
+    set guifont=Hack:11
+  else
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
   endif
 endif
 
