@@ -1,5 +1,3 @@
-# vim: set ft=config
-
 [options]
   resize_grip = false
   scroll_on_output = false
@@ -14,17 +12,17 @@
   font = Iosevka Term 12
   scrollback_lines = 7000
   search_wrap = true
-  cursor_blink = on
-  cursor_shape = ibeam
+  cursor_blink = system
+  cursor_shape = block
   browser = chromium
 
 [colors]
   # foreground = #cbe3e7
   # background = #1e1c31
-  foreground = #4D4D4C
+  foreground = #000000
   foreground_dim = #888888
   background = #EEEEEE
-  cursor = #000000
+  cursor = #B2C7DO
   highlight = #51617d
   color0 = #B21C1C
   color1 = #FF3D74
@@ -42,3 +40,6 @@
   color13 = #906cff
   color14 = #63f2f1
   color15 = #a6b3cc
+
+[hints]
+  foreground = #55FFFF

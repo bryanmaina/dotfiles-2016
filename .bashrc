@@ -17,6 +17,9 @@ export ANDROID_HOME="/opt/android-sdk"
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
+# setting fzf finder
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi

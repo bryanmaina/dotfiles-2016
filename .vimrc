@@ -125,7 +125,7 @@ set linespace=0                                               " No extra spaces 
 set winminheight=0                                            " Windows can be 0 line high
 set scrolljump=5                                              " Lines to scroll when cursor leaves screen
 set scrolloff=0                                               " Minimum lines to keep above and below cursor
-
+set t_Co=256                                                " forc 256 color scheme before trying anything
 set cursorline                                              " highlight current line
 set cursorcolumn                                            " highlight current column
 
@@ -167,7 +167,7 @@ if has('nvim')
   " set poython host (default would be python3)
   "let g:python_host_prog='/usr/bin/python2.7'
   let g:python_host_prog = '/usr/bin/python'
-  highlight TermCursor ctermbg=1 guibg=#ff6767
+  highlight TermCursor ctermbg=0 guibg=#ff6767
 
   " Terminal settings
   tnoremap <C-\> <C-\><C-n>
@@ -178,9 +178,9 @@ if has('nvim')
   :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   tnoremap <esc><esc> <c-\><c-n>
   " " Workaround since <C-h> isn't working in neovim right now
-  "tnoremap <c-j> <C-\><C-n><C-w>j
-  "tnoremap <c-k> <C-\><C-n><C-w>k
-  "tnoremap <c-l> <C-\><C-n><C-w>l
+  tnoremap <c-j> <C-\><C-n><C-w>j
+  tnoremap <c-k> <C-\><C-n><C-w>k
+  tnoremap <c-l> <C-\><C-n><C-w>l
 
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 

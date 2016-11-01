@@ -422,6 +422,7 @@ filetype plugin indent on
 " colorscheme flatcolor
 " colorscheme seoul256
 colorscheme PaperColor
+hi CursorLine   cterm=NONE ctermbg=229 ctermfg=NONE
 
 hi link GitGutterAdd DiffAdd
 hi link GitGutterDelete DiffDelete
