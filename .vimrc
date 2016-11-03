@@ -250,6 +250,16 @@ nmap gp `[v`]
 vnoremap > >gv
 vnoremap < <gv
 
+" Always autosave everything
+:au FocusLost * :wa
+" Save on buffer switch
+:set autowrite
+" Selectively save a specific file
+    function! FocusLost_SaveFiles()
+      exe ":au FocusLost" expand("%") ":wa"
+    endfunction
+
+
 " To save instead of :w
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>

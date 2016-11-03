@@ -368,6 +368,7 @@ call plug#begin('~/.vim/plugged')
   "File Explorer
   Plug 'scrooloose/nerdtree'
   let NERDTreeShowLineNumbers=1
+  let NERDTreeQuitOnOpen=1
   noremap \ :NERDTreeToggle<CR>
 
   Plug 'rbgrouleff/bclose.vim'
@@ -423,6 +424,7 @@ filetype plugin indent on
 " colorscheme seoul256
 colorscheme PaperColor
 hi CursorLine   cterm=NONE ctermbg=229 ctermfg=NONE
+call FocusLost_SaveFiles()
 
 hi link GitGutterAdd DiffAdd
 hi link GitGutterDelete DiffDelete
