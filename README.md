@@ -11,7 +11,7 @@ If you know this guy just let me know by sedding me a message PLEASE !!
 
 # .vimrc
 
-[.vimrc](https://github.com/aemb/dotfiles/blob/master/.vimrc)inspired by @MaxSt. I have added some features.
+[.vimrc](https://github.com/aemb/dotfiles/blob/master/.vimrc) inspired by @MaxSt. I have added some features.
 You can diff with @MaxSt one [here](https://github.com/MaxSt/dotfiles/blob/master/vimrc).
 ~~I wish that `<C-h>` will work soon on @Neovim for moving the cursor left in insert mode.~~ I managed to make `<C-h>` works in [termite terminal](https://www.archlinux.org/packages/community/x86_64/termite/) but it still not work in Urxvt.
 
