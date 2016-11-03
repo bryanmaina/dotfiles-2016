@@ -15,6 +15,6 @@ If you know this guy just let me know by sedding me a message PLEASE !!
 You can diff with @MaxSt one [here](https://github.com/MaxSt/dotfiles/blob/master/vimrc).
 ~~I wish that `<C-h>` will work soon on @Neovim for moving the cursor left in insert mode.~~ I managed to make `<C-h>` work in [termite terminal](https://www.archlinux.org/packages/community/x86_64/termite/) but it still not work in Urxvt.
 
-- [] Meteor.js support for neovim
-- [] Starting layouts for i3wm
-- [] Make `<C-h>` works in urxvt
+- [ ] Meteor.js support for neovim
+- [ ] Starting layouts for i3wm
+- [ ] Make `<C-h>` works in urxvt
