@@ -31,7 +31,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id bash -c "i3lock -c 000000"
-exec --no-stratup-id bash -c "compton"
+#exec --no-stratup-id bash -c "compton"
 
 
 # start a terminal
@@ -169,6 +169,32 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status
+    colors {
+      separator #666666
+        background #101112
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #0088CC #34373b  #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+  mode hide
+  hidden_state hide
+  modifier mod4
+}
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+
+# Hide bar key bind
+bindsym $mod+w bar hidden_state toggle
 
 # Volume
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -208,26 +234,7 @@ for_window [class="feh"] floating enable
 # No title on windows
 new_window 1pixel
 
-bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  status_command i3status
-  colors {
-    separator #666666
-    background #101112
-    statusline #dddddd
-    focused_workspace #0088CC #0088CC #ffffff
-    active_workspace #333333 #333333 #ffffff
-    inactive_workspace #0088CC #34373b  #888888
-    urgent_workspace #2f343a #900000 #ffffff
-  }
-}
-client.focused #0088CC #0088CC #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
 
 #exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/tickr'
 for_window [class="Tickr"] floating enable

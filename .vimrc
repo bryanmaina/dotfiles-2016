@@ -264,6 +264,16 @@ imap <A-Cr> <esc>o
 
 " This is for opening new tabs or
 " switching between tabs
+imap <A-&> <esc>:tabnext 1<Cr>i
+imap <A-é> <esc>:tabnext 2<Cr>i
+imap <A-"> <esc>:tabnext 3<Cr>i
+imap <A-'> <esc>:tabnext 4<Cr>i
+imap <A-(> <esc>:tabnext 5<Cr>i
+imap <A-§> <esc>:tabnext 6<Cr>i
+imap <A-è> <esc>:tabnext 7<Cr>i
+imap <A-!> <esc>:tabnext 8<Cr>i
+imap <A-ç> <esc>:tabnext 9<Cr>i
+imap <A-à> <esc>:tabnext 10<Cr>i
 nnoremap <A-&> 1gt
 nnoremap <A-é> 2gt
 nnoremap <A-"> 3gt
