@@ -60,8 +60,15 @@ call plug#begin('~/.vim/plugged')
 
   " fuzzy finder
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-  nmap <leader>t :FZF<CR>
   set rtp+=~/.fzf
+  let g:fzf_layout = { 'window': 'enew' }
+  if has('nvim')
+    aug fzf_setup
+      au!
+      au TermOpen term://*FZF tnoremap <silent> <buffer><nowait> <esc> <c-c>
+    aug END
+  end
+  nmap <silent> <leader>t :FZF<CR>
 
   " mutiple cursors
   Plug 'terryma/vim-multiple-cursors'
@@ -424,7 +431,7 @@ filetype plugin indent on
 " colorscheme seoul256
 colorscheme PaperColor
 hi CursorLine   cterm=NONE ctermbg=229 ctermfg=NONE
-call FocusLost_SaveFiles()
+autocmd BufReadPost * call FocusLost_SaveFiles()
 
 hi link GitGutterAdd DiffAdd
 hi link GitGutterDelete DiffDelete
