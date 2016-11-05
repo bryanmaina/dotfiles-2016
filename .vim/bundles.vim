@@ -61,7 +61,7 @@ call plug#begin('~/.vim/plugged')
   " fuzzy finder
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
   set rtp+=~/.fzf
-  let g:fzf_layout = { 'window': 'enew' }
+  let g:fzf_history_dir = '~/.local/share/fzf-history'
   if has('nvim')
     aug fzf_setup
       au!
@@ -72,6 +72,19 @@ call plug#begin('~/.vim/plugged')
 
   " mutiple cursors
   Plug 'terryma/vim-multiple-cursors'
+  " Called once right before you start selecting multiple cursors
+  function! Multiple_cursors_before()
+    if exists(':NeoCompleteLock')==2
+      exe 'NeoCompleteLock'
+    endif
+  endfunction
+
+  " Called once only when the multiple selection is canceled (default <Esc>)
+  function! Multiple_cursors_after()
+    if exists(':NeoCompleteUnlock')==2
+      exe 'NeoCompleteUnlock'
+    endif
+  endfunction
 
   " typescript auto complation
   Plug 'Quramy/tsuquyomi'
@@ -186,9 +199,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'wavded/vim-stylus'
 
   " syntastic
-    Plug 'scrooloose/syntastic'
-    let g:syntastic_python_python_use_codec=1
-    let g:syntastic_jade_checkers = ['jade_lint', 'tsuquyomi']
+  Plug 'scrooloose/syntastic'
+  let g:syntastic_python_python_use_codec=1
+  let g:syntastic_jade_checkers = ['jade_lint', 'tsuquyomi']
 
 
   " Tabular (text filtering and alignment (:Tab /[ =,... ]))
@@ -431,6 +444,7 @@ filetype plugin indent on
 " colorscheme seoul256
 colorscheme PaperColor
 hi CursorLine   cterm=NONE ctermbg=229 ctermfg=NONE
+hi CursorColumn   cterm=NONE ctermbg=229 ctermfg=NONE
 autocmd BufReadPost * call FocusLost_SaveFiles()
 
 hi link GitGutterAdd DiffAdd

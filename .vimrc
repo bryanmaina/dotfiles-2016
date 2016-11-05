@@ -253,7 +253,7 @@ vnoremap < <gv
 " Always autosave everything
 :au FocusLost * :wa
 " Save on buffer switch
-:set autowrite
+:set autowrite!
 " Selectively save a specific file
     function! FocusLost_SaveFiles()
       exe ":au FocusLost" expand("%") ":wa"
@@ -296,7 +296,7 @@ nnoremap <A-ç> 9gt
 nnoremap <A-à> 10gt
 "nnoremap <C-tab> :tabprevious<CR>
 "nnoremap <F3> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>
+map <C-t> :tabnew<CR>
 "inoremap <F2> <Esc>:tabprevious<CR>i
 "inoremap <F3> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
