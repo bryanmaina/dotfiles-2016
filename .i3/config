@@ -31,7 +31,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id bash -c "i3lock -c 000000"
-#exec --no-stratup-id bash -c "compton"
+# exec --no-stratup-id bash -c "compton"
 
 
 # start a terminal
@@ -241,8 +241,9 @@ for_window [class="Tickr"] floating enable
 for_window [class="Tickr"] move scratchpad
 for_window [class="Tickr"] scratchpad show
 
-exec --no-startup-id "bash ~/.wallpaper"
+# exec --no-startup-id "bash ~/.wallpaper"
 #exec feh --bg-fill ~/Images/wallpaper/x-miscellaneous-any-with-nice-blurry-edges-motion-blur-428891.jpg
+exec feh --bg-fill ~/Projects/Context_Free/recursive.png
 #exec feh --bg-fill --randomize ~/Images/wallpaper/
 #exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/california'
 #exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'

@@ -12,6 +12,19 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
+
+" cfdg files identation
+" autocmd! BufEnter *.cfdg setf cfdg
+au BufNewFile,BufRead *.cfdg
+    \ set filetype=cfdg |
+    \ set tabstop=1 |
+    \ set softtabstop=1 |
+    \ set shiftwidth=1 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
 " python scripts execution
 imap <F32> <Esc>:!python 
 nmap <F32> :!python 

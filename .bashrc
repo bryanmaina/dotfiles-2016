@@ -14,7 +14,7 @@ export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
 export XDG_CONFIG_HOME="/home/dumy/.config/"
 export ANDROID_HOME="/opt/android-sdk"
 #export PATH="$PATH:$HOME/.node/bin"
-PATH="$HOME/.node_modules/bin:$PATH"
+export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
 # setting fzf finder

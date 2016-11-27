@@ -24,7 +24,9 @@ call plug#begin('~/.vim/plugged')
   set t_Co=256   " This is may or may not needed.
   set background=light
 
-"Plug 'blueyed/vim-diminactive'
+Plug 'blueyed/vim-diminactive'
+let g:diminactive_enable_focus = 1
+let g:diminactive_use_syntax = 0
 
   " " ctrlp (open file with fuzzy search)
   " Plug 'ctrlpvim/ctrlp.vim'
@@ -74,6 +76,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-multiple-cursors'
   " Called once right before you start selecting multiple cursors
   function! Multiple_cursors_before()
+    call youcompleteme#DisableCursorMovedAutocommands()
+    " set foldmethod=manual
+    " let s:old_ycm_whitelist = g:ycm_filetype_whitelist
+    " let g:ycm_filetype_whitelist = {} 
     if exists(':NeoCompleteLock')==2
       exe 'NeoCompleteLock'
     endif
@@ -81,33 +87,44 @@ call plug#begin('~/.vim/plugged')
 
   " Called once only when the multiple selection is canceled (default <Esc>)
   function! Multiple_cursors_after()
+    call youcompleteme#EnableCursorMovedAutocommands()
+    " set foldmethod=syntax
+    " let g:ycm_filetype_whitelist = s:old_ycm_whitelist
     if exists(':NeoCompleteUnlock')==2
       exe 'NeoCompleteUnlock'
     endif
   endfunction
 
-  " typescript auto complation
-  Plug 'Quramy/tsuquyomi'
-  let g:tsuquyomi_disable_quickfix = 1
 
   "YouCompleteMe (Code Completion)
-    "Plug 'Valloric/YouCompleteMe'
-    Plug 'Valloric/YouCompleteMe', {'do': './install.py --all'}
-    let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-    let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-    let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-    let g:ycm_complete_in_comments = 1 " Completion in comments
-    let g:ycm_complete_in_strings = 1 " Completion in string
+  "Plug 'Valloric/YouCompleteMe'
+  Plug 'Valloric/YouCompleteMe', {'do': './install.py --all'}
+  let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+  let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+  let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+  let g:ycm_complete_in_comments = 1 " Completion in comments
+  let g:ycm_complete_in_strings = 1 " Completion in string
 
-    let g:ycm_add_preview_to_completeopt=0
-    let g:ycm_confirm_extra_conf=0
-    set completeopt-=preview
-    "let g:ycm_key_list_select_completion = ['<C-v>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-b>', '<Up>']
+  let g:ycm_add_preview_to_completeopt=0
+  let g:ycm_confirm_extra_conf=0
+  set completeopt-=preview
+  "let g:ycm_key_list_select_completion = ['<C-v>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-b>', '<Up>']
 
-    " Goto definition with F3
-    map <F3> :YcmCompleter GoTo<CR>
+  " Goto definition with F3
+  map <F3> :YcmCompleter GoTo<CR>
 
+  " typescript auto complation
+  " Plug 'Quramy/tsuquyomi'
+  " let g:tsuquyomi_disable_quickfix = 1
+  " autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
+  " autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
+  " autocmd FileType typescript setlocal completeopt+=menu,preview
+
+  if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+  endif
+  let g:ycm_semantic_triggers['typescript'] = ['.']
 
   " Ultisnips (Code Snippets)
   Plug 'SirVer/ultisnips'
@@ -258,9 +275,9 @@ call plug#begin('~/.vim/plugged')
   " vim-css-color
   Plug 'ap/vim-css-color'
 
-  " chrisbra/Colorizer
-  Plug 'chrisbra/Colorizer'
-  let g:colorizer_auto_color = 1
+  " " chrisbra/Colorizer
+  " Plug 'chrisbra/Colorizer'
+  " let g:colorizer_auto_color = 1
 
   "Emmet (Zen Coding)
   Plug 'mattn/emmet-vim'
