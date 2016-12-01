@@ -208,8 +208,9 @@ endif
 " ============================================================================
 " GUI {{{
 " ============================================================================
+set guioptions+=m
 if has('gui_running')
-  set guioptions-=m
+  set guioptions+=m
   set guioptions-=T
   set guioptions-=r
   set guioptions-=e
@@ -416,8 +417,8 @@ command! -nargs=0 Reg call Reg() | normal <cr>
 " ============================================================================
 " PLUGINS {{{
 " ============================================================================
-if filereadable(expand("~/.vim/bundles.vim"))
-    source ~/.vim/bundles.vim
+if filereadable(expand("~/.config/nvim/bundles.vim"))
+    source ~/.config/nvim/bundles.vim
 endif
 
 " Automatic detect file types

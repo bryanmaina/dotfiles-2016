@@ -1,4 +1,4 @@
-" Easy bundles editing with :EditBundles
+" Easy bundles edeting with :EditBundles
 command! BundlesEdit :edit ~/.vim/bundles.vim
 noremap gb :BundlesEdit<CR>
 
@@ -17,6 +17,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " beautifull lambda letter replacement
 Plug 'calebsmith/vim-lambdify'
+
 
 " Colorscheme
 Plug 'MaxSt/FlatColor'
@@ -154,7 +155,7 @@ let g:lightline = {
       \'colorscheme': 'PaperColor',
       \'active': {
       \'left': [ [ 'mode' ],
-      \          [ 'readonly', 'filename', 'modified', 'parinfermode' ] ]
+      \          [ 'readonly', 'filename', 'modified' ] ]
       \},
       \'component': {
       \'readonly': '%{&filetype=="help"?"":&readonly?"L":""}',
@@ -162,7 +163,6 @@ let g:lightline = {
       \'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \},
       \'component_function': {
-      \'parinfermode': 'LightLineParinferMode',
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat'
       \},
@@ -170,19 +170,19 @@ let g:lightline = {
       \'subseparator': { 'left': '❱', 'right': '❱' }
       \ }
 
-function! LightLineParinferMode()
-  if &filetype == "clojure"
-    if g:parinfer_mode == "off"
-      return "o"
-    elseif g:parinfer_mode == "indent"
-      return "⇆"
-    else
-      return "❪❫"
-    endif
-  else
-    return ""
-  endif
-endfunction
+" function! LightLineParinferMode()
+"   if &filetype == "clojure"
+"     if g:parinfer_mode == "off"
+"       return "o"
+"     elseif g:parinfer_mode == "indent"
+"       return "⇆"
+"     else
+"       return "❪❫"
+"     endif
+"   else
+"     return ""
+"   endif
+" endfunction
 
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -441,11 +441,20 @@ Plug 'junegunn/vim-peekaboo'
 " let g:sexp_enable_insert_mode_mappings = 0
 " Plug 'tpope/vim-sexp-mappings-for-regular-people', {'for': 'clojure'}
 
+" Plug 'kovisoft/slimv'
+
+" For use with alternate Clojure REPL plugins
+Plug 'guns/vim-clojure-static'
+let g:clojure_align_multiline_strings = 0
+let g:clojure_align_subforms = 1
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-classpath'
+
 
 Plug 'neovim/node-host'
 " Plug 'clojure-vim/nvim-parinfer.js'
-" let g:parinfer_airline_integration = 0
+" let g:parinfer_airline_integration = 1
 " au BufNewFile,BufRead *.xtm let g:parinfer_mode = "off"
 
 function! ToggleParinferMode()
