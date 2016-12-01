@@ -22,7 +22,7 @@
   foreground = #EEEEEE
   foreground_dim = #888888
   # background = #EEEEEE
-  background = rgba(28, 28, 28, 0.5)
+  background = rgba(28, 28, 28, 0.75)
   cursor = #B2C7DO
   highlight = #51617d
   color0 = #B21C1C

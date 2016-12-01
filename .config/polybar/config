@@ -21,7 +21,7 @@ offset-x = 0
 offset-y = 0
 
 ;background = ${xrdb:color9}
-background = #ee222222
+background = #222222
 foreground = #dfdfdf
 
 ;lineheight = 1
@@ -50,8 +50,8 @@ modules-right = backlight volume memory cpu wlan eth battery temperature date fi
 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
+tray-transparent = true
+tray-background = #0063ff
 
 ;wm-restack = bspwm
 
@@ -68,7 +68,6 @@ interval = 25
 
 mount-0 = /
 mount-1 = /home
-mount-2 = [swap]
 
 label-mounted = %mountpoint%: %percentage_free%
 
