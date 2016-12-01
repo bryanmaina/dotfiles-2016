@@ -32,6 +32,7 @@ floating_modifier $mod
 
 exec --no-startup-id bash -c "i3lock -c 000000"
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.i3/xcompmgr_toggle.sh
 bindsym $mod+t exec ~/.i3/xcompmgr_toggle.sh
 # exec --no-stratup-id bash -c "compton"
 

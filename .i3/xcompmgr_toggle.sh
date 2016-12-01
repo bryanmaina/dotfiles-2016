@@ -5,7 +5,8 @@ if pgrep -x xcompmgr &>/dev/null; then
     pkill xcompmgr &
 else
     echo "Turning xcompmgr OFF"
-    xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+    # xcompmgr -c -C -t-5 -l-5 -r4.2 -o.80 &
+    xcompmgr -c &
 fi
 
 exit 0
