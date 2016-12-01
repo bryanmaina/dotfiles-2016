@@ -8,6 +8,7 @@
 [[ $- != *i* ]] && return
 
 export VISUAL="nvim"
+export EDITOR="nvim"
 export BROWSER="/usr/bin/chromium"
 export AWT_TOOLKIT=XToolkit
 export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
@@ -46,6 +47,7 @@ alias League_of_Legends='cd /home/dumy/.PlayOnLinux/wineprefix/LeagueOfLegends/d
 alias ls='ls --color=auto'
 
 alias v='nvim'
+alias emacs='emacs -nw'
 
 # Getting the weather of any city
 wego ()
