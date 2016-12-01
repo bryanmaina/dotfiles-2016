@@ -5,10 +5,10 @@
 " ============================================================================
 syntax on
 
-if has('patch-7.4.1778')
-  set guicolors
-endif
 if has('nvim')
+  if has('patch-7.4.1778')
+    set guicolors
+  endif
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
@@ -178,8 +178,8 @@ endif
 " ============================================================================
 if has('nvim')
   " set poython host (default would be python3)
-  "let g:python_host_prog='/usr/bin/python2.7'
-  let g:python_host_prog = '/usr/bin/python'
+  let g:python_host_prog='/usr/bin/python2.7'
+  let g:python3_host_prog = '/usr/bin/python'
   highlight TermCursor ctermbg=0 guibg=#ff6767
 
   " Terminal settings
@@ -189,16 +189,16 @@ if has('nvim')
   " Make ctrl-h/j/k/l move between windows and auto-insert in terminals
 
   :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-  tnoremap <esc><esc> <c-\><c-n>
+  " tnoremap <esc><esc> <c-\><c-n>
   " " Workaround since <C-h> isn't working in neovim right now
-  tnoremap <c-j> <C-\><C-n><C-w>j
-  tnoremap <c-k> <C-\><C-n><C-w>k
-  tnoremap <c-l> <C-\><C-n><C-w>l
+  " tnoremap <c-j> <C-\><C-n><C-w>j
+  " tnoremap <c-k> <C-\><C-n><C-w>k
+  " tnoremap <c-l> <C-\><C-n><C-w>l
 
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
   " Hack to get C-h working in neovim
-  imap <BS> <C-W>h
+  " imap <BS> <C-W>h
 
   set ttimeout
   set ttimeoutlen=0
@@ -330,6 +330,8 @@ noremap <silent> <A-l> <C-w>><esc>
 " emacs insert bindings
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
+inoremap <A-a> <C-o>b
+inoremap <A-e> <C-o>w
 
 " TO move is selection mode
 inoremap <C-d> <Left>
