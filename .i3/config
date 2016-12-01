@@ -31,6 +31,8 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id bash -c "i3lock -c 000000"
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+bindsym $mod+t exec ~/.i3/xcompmgr_toggle.sh
 # exec --no-stratup-id bash -c "compton"
 
 
@@ -49,7 +51,8 @@ bindsym $mod+u exec bash -c "i3lock -c 000000 && systemctl suspend"
 bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run -width 1366 -lines 10 -eh 2  -padding 150 -opacity 85
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -116,28 +119,28 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 exec "i3-msg workspace 1; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+2 exec "i3-msg workspace 2; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+3 exec "i3-msg workspace 3; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+4 exec "i3-msg workspace 4; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+5 exec "i3-msg workspace 5; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+6 exec "i3-msg workspace 6; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+7 exec "i3-msg workspace 7; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+8 exec "i3-msg workspace 8; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+9 exec "i3-msg workspace 9; i3-msg scratchpad show;i3-msg focus mode_toggle"
-bindsym $mod+0 exec "i3-msg workspace 10; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+1 exec "i3-msg workspace number 1 code; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+2 exec "i3-msg workspace number 2 docs; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+3 exec "i3-msg workspace number 3 browse; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+4 exec "i3-msg workspace number 4 listen; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+5 exec "i3-msg workspace number 5 graphics; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+6 exec "i3-msg workspace number 6 bis; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+7 exec "i3-msg workspace number 7 test; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+8 exec "i3-msg workspace number 8 twitter; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+9 exec "i3-msg workspace number 9 misc; i3-msg scratchpad show;i3-msg focus mode_toggle"
+bindsym $mod+0 exec "i3-msg workspace number 10 pavu; i3-msg scratchpad show;i3-msg focus mode_toggle"
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number 1 code
+bindsym $mod+Shift+2 move container to workspace number 2 docs
+bindsym $mod+Shift+3 move container to workspace number 3 browse
+bindsym $mod+Shift+4 move container to workspace number 4 listen
+bindsym $mod+Shift+5 move container to workspace number 5 graphics
+bindsym $mod+Shift+6 move container to workspace number 6 bis
+bindsym $mod+Shift+7 move container to workspace number 7 test
+bindsym $mod+Shift+8 move container to workspace number 8 twitter
+bindsym $mod+Shift+9 move container to workspace number 9 misc
+bindsym $mod+Shift+0 move container to workspace number 10 pavu
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -173,28 +176,28 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  status_command i3status
-    colors {
-      separator #666666
-        background #101112
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #0088CC #34373b  #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-  mode hide
-  hidden_state hide
-  modifier mod4
-}
-client.focused #0088CC #0088CC #ffffff #dddddd
+# bar {
+#   status_command i3status
+#     colors {
+#       separator #666666
+#         background #101112
+#         statusline #dddddd
+#         focused_workspace #0088CC #0088CC #ffffff
+#         active_workspace #333333 #333333 #ffffff
+#         inactive_workspace #0088CC #34373b  #888888
+#         urgent_workspace #2f343a #900000 #ffffff
+#     }
+#   mode hide
+#   hidden_state hide
+#   modifier mod4
+# }
+client.focused #ff5400 #ff5400 #ffffff #dddddd
 client.focused_inactive #333333 #333333 #888888 #292d2e
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
 # Hide bar key bind
-bindsym $mod+w bar hidden_state toggle
+# bindsym $mod+w bar hidden_state toggle
 
 # Volume
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -241,9 +244,9 @@ for_window [class="Tickr"] floating enable
 for_window [class="Tickr"] move scratchpad
 for_window [class="Tickr"] scratchpad show
 
-# exec --no-startup-id "bash ~/.wallpaper"
+exec --no-startup-id "bash ~/.wallpaper"
 #exec feh --bg-fill ~/Images/wallpaper/x-miscellaneous-any-with-nice-blurry-edges-motion-blur-428891.jpg
-exec feh --bg-fill ~/Projects/Context_Free/recursive.png
+# exec feh --bg-fill ~/Projects/Context_Free/recursive.png
 #exec feh --bg-fill --randomize ~/Images/wallpaper/
 #exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/california'
 #exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
