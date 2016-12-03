@@ -45,4 +45,5 @@ fi
 #exec openbox
 #exec gnome-session
 #exec env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic
+#exec connect_ex_screen
 exec i3

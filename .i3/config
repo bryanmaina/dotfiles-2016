@@ -30,9 +30,10 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# exec_always --no-startup-id screen_switcher
 exec --no-startup-id bash -c "i3lock -c 000000"
-exec_always --no-startup-id launch_polybar
 exec_always --no-startup-id xcompmgr_toggle
+exec_always --no-startup-id launch_polybar
 bindsym $mod+t exec xcompmgr_toggle
 # exec --no-stratup-id bash -c "compton"
 
