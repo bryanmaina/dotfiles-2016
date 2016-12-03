@@ -62,6 +62,9 @@ au BufRead,BufNewFile *.html; *.css
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
+au BufRead,BufNewFile *.clj
+    \ inoremap <silent> <F2> <Esc>cpp
+
 set virtualedit=block
 set nojoinspaces
 set expandtab smarttab
@@ -183,7 +186,7 @@ if has('nvim')
   highlight TermCursor ctermbg=0 guibg=#ff6767
 
   " Terminal settings
-  tnoremap <C-\> <C-\><C-n>
+  tnoremap <Esc> <C-\><C-n>
 
   " Window navigation function
   " Make ctrl-h/j/k/l move between windows and auto-insert in terminals
@@ -335,7 +338,7 @@ inoremap <A-a> <C-o>b
 inoremap <A-e> <C-o>w
 
 " TO move is selection mode
-inoremap <C-d> <Left>
+" inoremap <C-d> <Left>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>

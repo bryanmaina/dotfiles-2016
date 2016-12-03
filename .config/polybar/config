@@ -259,8 +259,9 @@ format-volume = <label-volume> <bar-volume>
 
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
+mapping = true
 
-label-muted =  sound muted
+label-muted = 🔇 muted
 label-muted-foreground = #55
 
 bar-volume-width = 10

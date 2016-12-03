@@ -229,6 +229,7 @@ for_window [class="MPlayer"] move scratchpad
 for_window [class="MPlayer"] scratchpad show
 #for_window [class="MPlayer"] floating enable; focus mode_toggle; move scratchpad; move right 525px,move down 290px
 for_window [class="feh"] floating enable
+for_window [class="shadertone"] floating disable
 
 #mpv player
 # for_window [class="mpv"] floating enable, move right 510px,move down 275px, move scratchpad, scratchpad show
