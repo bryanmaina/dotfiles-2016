@@ -31,9 +31,9 @@ font pango:monospace 8
 floating_modifier $mod
 
 exec --no-startup-id bash -c "i3lock -c 000000"
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id ~/.i3/xcompmgr_toggle.sh
-bindsym $mod+t exec ~/.i3/xcompmgr_toggle.sh
+exec_always --no-startup-id launch_polybar
+exec_always --no-startup-id xcompmgr_toggle
+bindsym $mod+t exec xcompmgr_toggle
 # exec --no-stratup-id bash -c "compton"
 
 
@@ -101,8 +101,9 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # multi screen bind
-bindsym $mod+o exec xrandr --output VGA1 --auto --right-of LVDS1
-bindsym $mod+Shift+o exec xrandr --output VGA1 --off --right-of LVDS1
+# bindsym $mod+o exec xrandr --output VGA1 --auto --right-of LVDS1
+bindsym $mod+o exec screen_switcher
+# bindsym $mod+Shift+o exec xrandr --output VGA1 --off --right-of LVDS1
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
