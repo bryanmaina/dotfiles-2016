@@ -15,10 +15,6 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
-" beautifull lambda letter replacement
-Plug 'calebsmith/vim-lambdify'
-
-
 " Colorscheme
 Plug 'MaxSt/FlatColor'
 let g:flatcolor_termcolors=16
@@ -110,7 +106,7 @@ endfunction
 
 "YouCompleteMe (Code Completion)
 "Plug 'Valloric/YouCompleteMe'
-Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --all' }
+Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugged/YouCompleteMe/install.py --all'}
 let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
@@ -129,12 +125,39 @@ let g:ycm_filetype_blacklist = {
 " Goto definition with F3
 map <F3> :YcmCompleter GoTo<CR>
 
+
+" syntastic
+Plug 'scrooloose/syntastic'
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_use_codec=1
+let g:syntastic_jade_checkers = ['jade_lint', 'tsuquyomi']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 " typescript auto complation
-" Plug 'Quramy/tsuquyomi'
-" let g:tsuquyomi_disable_quickfix = 1
+Plug 'leafgarland/typescript-vim'
+let g:typescript_indent_disable = 1
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd FileType typescript :set makeprg=tsc
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+Plug 'Quramy/tsuquyomi'
+let g:tsuquyomi_disable_quickfix = 1
 " autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
 " autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
-" autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript setlocal completeopt+=menu,preview
+
+" Angular 2
+Plug 'bdauria/angular-cli.vim'
+Plug 'burnettk/vim-angular'
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'jquery,underscore,backbone,angular,angularui,angularuirouter,jasmine,Vue.js,d3.js'
+let g:syntastic_html_tidy_ignore_errors = [' attribute name ',' attribute "*ngswitchdefault" ']
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
@@ -228,11 +251,6 @@ Plug 'digitaltoad/vim-jade'
 
 " Vim-stylus
 Plug 'wavded/vim-stylus'
-
-" syntastic
-Plug 'scrooloose/syntastic'
-let g:syntastic_python_python_use_codec=1
-let g:syntastic_jade_checkers = ['jade_lint', 'tsuquyomi']
 
 
 " Tabular (text filtering and alignment (:Tab /[ =,... ]))
@@ -375,8 +393,13 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "Plug 'benmills/vimux'
 
 " better js syntax{
-"Plug 'othree/yajs.vim', { 'for' : ['javascript']}
-"
+Plug 'othree/yajs.vim', { 'for' : ['javascript']}
+
+" Plug 'pangloss/vim-javascript'
+" let g:javascript_plugin_jsdoc = 1
+" let g:javascript_plugin_ngdoc = 1
+" let g:javascript_plugin_flow = 1
+
 Plug 'sheerun/vim-polyglot'
 
 " Plug 'Shougo/neco-syntax'
@@ -481,8 +504,8 @@ filetype plugin indent on
 " colorscheme seoul256
 colorscheme PaperColor
 " try 229 for light background
-hi CursorLine   cterm=NONE ctermbg=232 ctermfg=NONE
-hi CursorColumn   cterm=NONE ctermbg=232 ctermfg=NONE
+" hi CursorLine   cterm=NONE ctermbg=232 ctermfg=NONE
+" hi CursorColumn   cterm=NONE ctermbg=232 ctermfg=NONE
 hi Normal guibg=NONE ctermbg=NONE
 autocmd BufReadPost * call FocusLost_SaveFiles()
 

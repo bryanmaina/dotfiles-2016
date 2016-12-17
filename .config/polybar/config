@@ -22,15 +22,17 @@ offset-x = 0
 offset-y = 0
 
 ;background = ${xrdb:color9}
-background = #222222
+; background = #222222
+background = #751c1c1c
 foreground = #dfdfdf
 
 ;lineheight = 1
 ;linecolor = #555
 overline-size = 2
 overline-color = #f00
-underline-size = 2
-underline-color = #00f
+underline-size = 3
+; underline-color = #00f
+underline-color = #ffa500
 
 border-bottom = 2
 border-bottom-color = #333
@@ -52,7 +54,8 @@ modules-right = backlight volume memory cpu wlan eth battery temperature date fi
 tray-position = right
 tray-padding = 2
 tray-transparent = true
-tray-background = #0063ff
+; tray-background = #0063ff
+tray-background = #00000000
 
 ;wm-restack = bspwm
 
@@ -124,8 +127,8 @@ label-monitor = %name%
 index-sort = true
 
 label-focused = %name% %icon%
-label-focused-background = #ee333333
-label-focused-underline= #cc333333
+label-focused-background = #1c1c1c
+label-focused-underline= #cc6600
 label-focused-padding = 2
 
 label-unfocused = %name%

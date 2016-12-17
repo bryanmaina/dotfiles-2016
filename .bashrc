@@ -42,7 +42,7 @@ alias np='nano PKGBUILD'
 alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo pacman -Syyuu  &&
 sudo pacman -Suu'
 alias wine32='env WINEARCH=win32 WINEPREFIX="/home/dumy/.wine32" wine'
-alias League_of_Legends='cd /home/dumy/.PlayOnLinux/wineprefix/LeagueOfLegends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/ && wine32 rads_user_kernel.exe run lol_launcher $(ls ../projects/lol_launcher/releases/) LoLLauncher.exe'
+alias League_of_Legends='pushd /home/dumy/.local/share/leagueoflegends/LOL/RADS/system/ && wine32 rads_user_kernel.exe run lol_launcher $(ls ../projects/lol_launcher/releases/) LoLLauncher.exe && popd'
 
 alias ls='ls --color=auto'
 
