@@ -172,6 +172,8 @@ let g:UltiSnipsListSnippets='<c-s>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
+Plug 'OmniSharp/omnisharp-vim'
+
 " lightline  (StatusBar)
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
