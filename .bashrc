@@ -7,6 +7,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
 export lVISUAL="nvim"
 export EDITOR="nvim"
 export BROWSER="/usr/bin/chromium"
