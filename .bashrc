@@ -7,7 +7,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export VISUAL="nvim"
+export lVISUAL="nvim"
 export EDITOR="nvim"
 export BROWSER="/usr/bin/chromium"
 export AWT_TOOLKIT=XToolkit

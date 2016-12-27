@@ -15,6 +15,9 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
+" Csound
+Plug 'kunstmusik/csound-repl'
+
 " Colorscheme
 Plug 'MaxSt/FlatColor'
 let g:flatcolor_termcolors=16
