@@ -1,5 +1,4 @@
 [options]
-[options]
   resize_grip = false
   scroll_on_output = false
   scroll_on_keystroke = true
