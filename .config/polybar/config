@@ -44,13 +44,13 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = fixed:pixelsize=10;0
+font-0 = fixed:pixelsize=5;0
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=10;0
+font-2 = siji:pixelsize=5;0
 
 ;modules-left = i3
 modules-center = i3
-;modules-right = backlight volume memory cpu wlan eth battery temperature date filesystem
+modules-right = wlan
 
 tray-position = right
 tray-padding = 2
@@ -192,20 +192,8 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-format-disconnected-underline = ${self.format-connected-underline}
-
-label-connected = %essid%
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = #55
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = #55
+label-connected = %{B#30cb00}    %{B-}
+label-disconnected = %{B#000}    %{B-}
 
 
 [module/eth]
