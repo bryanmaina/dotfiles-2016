@@ -19,12 +19,13 @@
 [colors]
   # foreground = #cbe3e7
   # background = #1e1c31
-  foreground = #EEEEEE
+  foreground = #2f4f4f
   foreground_dim = #888888
   # background = #EEEEEE
   # background = rgba(28, 28, 28, 0.75)
-  background = rgba(0, 0, 153, 0.75)
-  cursor = #B2C7DO
+  # background = rgba(0, 0, 153, 0.75)
+  background = rgb(238,238,238)
+  cursor = #B2C1D0
   highlight = #51617d
   color0 = #B21C1C
   color1 = #FF3D74

@@ -9,8 +9,8 @@
 
 
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
-export lVISUAL="nvim"
-export EDITOR="nvim"
+export VISUAL='emacsclient -t -a ""'
+export EDITOR='emacsclient -a ""'
 export BROWSER="/usr/bin/chromium"
 export AWT_TOOLKIT=XToolkit
 export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
@@ -49,7 +49,9 @@ alias League_of_Legends='pushd /home/dumy/.local/share/leagueoflegends/LOL/RADS/
 alias ls='ls --color=auto'
 
 alias v='nvim'
-alias emacs='emacs -nw'
+
+alias em='emacsclient -t -a ""'
+alias mg='emacsclient -nc -a ""'
 
 # Getting the weather of any city
 wego ()
