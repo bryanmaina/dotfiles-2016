@@ -1,5 +1,6 @@
 ;;; package --- Summary
 
+;;; Code:
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
@@ -9,8 +10,9 @@
 (package-initialize)
 
 ;;; Commentary:
+;; Description: This is a mess
 
-;; Track servers for emacs daemon
+;; Track servers for Emacs daemon
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -22,6 +24,62 @@
 (scroll-bar-mode 0)
 (tooltip-mode 0)
 
+
+;; xterm mouse support
+;; make mouse selection to be emacs region making
+(require 'mouse)
+(xterm-mouse-mode t)
+
+;; enable clipboard in emacs
+(setq select-enable-clipboard t)
+(setq select-enable-primary t)
+(setq select-active-regions nil)
+(setq mouse-drag-copy-region t)
+
+;; Save text copied from an external program to the kill ring before killing
+;; new text from within emacs.
+(setq save-interprogram-paste-before-kill t)
+
+;;; Delete Selection
+;; Typing anything after highlighting text overwrites that text
+;; http://emacsredux.com/blog/2013/04/12/delete-selection-on-insert
+(delete-selection-mode 1)
+
+(global-set-key [mouse-2] 'mouse-yank-primary)
+
+;;; Show Paren
+;; Allow one to see matching pairs of parentheses
+;; When point is on one of the paired characters, highlight the other
+(show-paren-mode 1)
+
+
+;;; Duplicate current line or region
+;; http://tuxicity.se/emacs/elisp/2010/03/11/duplicate-current-line-or-region-in-emacs.html
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated.  However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (let (beg end (origin (point)))
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (let ((region (buffer-substring-no-properties beg end)))
+      (dotimes (i arg)
+        (goto-char end)
+        (newline)
+        (insert region)
+        (setq end (point)))
+      (goto-char (+ origin (* (length region) arg) arg)))))
+
+;;; Managing white spaces and empty newlines
+(setq require-final-newline t)
+
+;;; Untabify
+(setq-default indent-tabs-mode nil) ; Use spaces instead of tabs for indentation
 
 ;; Use package macro
 (unless (package-installed-p 'use-package)
@@ -77,6 +135,8 @@
     :ensure t
     :config
     (company-emacs-eclim-setup))
+  (use-package company-tern
+    :ensure t)
   ;; Javascript autocompletion
   (use-package tern :ensure t :defer t
     :init (add-hook 'javascript-hook 'tern-mode)
@@ -153,7 +213,7 @@
   :ensure try
   :bind (("C-s" . swiper)
 	 ("M-x" . counsel-M-x)
-	 ;; ("C-x C-f" . counsel-find-file)
+	 ("C-x C-f" . counsel-find-file)
 	 ("<f1> f" . counsel-describe-function)
 	 ("<f1> v" . counsel-describe-variable)
 	 ("<f1> l" . counsel-find-library)
@@ -202,7 +262,7 @@
 ;;; Current File Buffer Actions
 ;; Delete current buffer file
 (defun modi/delete-current-buffer-file ()
-  "Deletes file connected to current buffer and kills buffer."
+  "Delete file connected to current buffer and kill buffer."
   (interactive)
   (let ((filename (buffer-file-name)))
     (when (and filename
@@ -268,7 +328,6 @@ will be killed."
       ;; (message "buf:%s  filename:%s  modified:%s  filereadable:%s"
       ;;          buf filename
       ;;          (buffer-modified-p buf) (file-readable-p (format "%s" filename)))
-
       ;; Revert only buffers containing files, which are not modified;
       ;; do not try to revert non-file buffers like *Messages*.
       (when (and filename
@@ -319,7 +378,7 @@ is set to a non-nil value."
 ;;; Toggle between buffers
 ;; http://www.emacswiki.org/emacs/SwitchingBuffers
 (defun toggle-between-buffers ()
-  "Toggle between 2 buffers"
+  "Toggle between 2 buffers."
   (interactive)
   (switch-to-buffer (other-buffer)))
 ;; (other-buffer &optional BUFFER VISIBLE-OK FRAME)
@@ -384,10 +443,6 @@ If LN is nil, defaults to 1 line."
  ("<C-M-left>"  . modi/scroll-other-window-down)
  ("<C-M-right>" . modi/scroll-other-window-up))
 
-; xterm mouse support
-(require 'mouse)
-(xterm-mouse-mode t)
-
 ;;;; Mouse Scrolling
 (bind-keys
  ("<mouse-4>" . modi/scroll-down)
@@ -397,6 +452,60 @@ If LN is nil, defaults to 1 line."
  ;; Make Alt+mousewheel scroll the other buffer
  ("<M-mouse-4>" . modi/scroll-other-window-down) ; M + wheel up
  ("<M-mouse-5>" . modi/scroll-other-window-up)) ; M + wheel down
+
+;; Allow scrolling of all buffers using mouse-wheel in `scroll-all-mode'.
+;; By default, `scroll-all-mode' works only with C-v/M-v.
+(defun modi/advice-mwhell-scroll-all (orig-fun &rest args)
+  "Execute ORIG-FUN in all the windows."
+  (let (ret)
+    (if scroll-all-mode
+        (save-selected-window (walk-windows (lambda (win)
+                                              (select-window win)
+                                              (condition-case nil
+                                                  (setq ret (apply orig-fun args))
+                                                (error nil)))))
+      (setq ret (apply orig-fun args)))
+    ret))
+(advice-add 'scroll-up   :around #'modi/advice-mwhell-scroll-all)
+(advice-add 'scroll-down :around #'modi/advice-mwhell-scroll-all)
+
+
+;;; One Window Toggle
+(defvar modi/toggle-one-window--buffer-name nil
+  "Variable to store the name of the buffer for which the `modi/toggle-one-window' function is called.")
+(defvar modi/toggle-one-window--window-configuration nil
+  "Variable to store the window configuration before `modi/toggle-one-window' function was called.")
+(defun modi/toggle-one-window (&optional force-one-window)
+  "Toggle the frame state between deleting all windows other than the current window and the windows state prior to that."
+  (interactive "P")
+  (if (or (null (one-window-p))
+          force-one-window)
+      (progn
+        (setq modi/toggle-one-window--buffer-name (buffer-name))
+        (setq modi/toggle-one-window--window-configuration (current-window-configuration))
+        (delete-other-windows))
+    (progn
+      (when modi/toggle-one-window--buffer-name
+        (set-window-configuration modi/toggle-one-window--window-configuration)
+        (switch-to-buffer modi/toggle-one-window--buffer-name)))))
+
+
+;;; Kill/Bury Buffer
+(defun modi/kill-buffer-dwim (kill-next-error-buffer)
+  "Kill the current buffer.
+If KILL-NEXT-ERROR-BUFFER is non-nil,
+kill the `next-error' buffer.  Examples of such
+buffers: *gtags-global*, *ag*, *Occur*."
+  (interactive "P")
+  (if kill-next-error-buffer
+      (kill-buffer (next-error-find-buffer))
+    (kill-buffer (current-buffer))))
+
+(defun modi/quit-and-kill-window ()
+  "Quit window and kill instead of burying the buffer in it."
+  (interactive)
+  (quit-window :kill))
+
 
 ;; hydra settings and
 ;; windows managing
@@ -498,7 +607,7 @@ _SPC_ cancel      _o_nly this     _d_elete       _=_ balance
    ("a" hydra-move-splitter-left)
    ("z" hydra-move-splitter-down)
    ("e" hydra-move-splitter-up)
-   ("r" hydra-moéve-splitter-right)
+   ("r" hydra-move-splitter-right)
    ("b" helm-mini)
    ("f" helm-find-files)
    ("F" follow-mode)
@@ -552,8 +661,42 @@ _SPC_ cancel      _o_nly this     _d_elete       _=_ balance
    ("w" hydra-move-splitter-down "S↓")
    ("e" hydra-move-splitter-up "S↑")
    ("r" hydra-move-splitter-right "S→")
+   ("SPC" nil "cancel")
    ))
      
+
+;;; Other Window/Buffer
+;; http://emacs.stackexchange.com/q/22226/115
+(defhydra hydra-other-window-buffer
+  (global-map "C-q"
+              :color red)
+  "other window/buffer"
+  ("r" other-window "→win")
+  ("a" (lambda () (interactive) (other-window -1)) "win←")
+  ("e" next-buffer "→buf")
+  ("z" previous-buffer "buf←"))
+
+
+(bind-keys
+  ("C-x 1"        . modi/toggle-one-window) ; default binding to `delete-other-windows'
+  ;; overriding `C-x C-p' originally bound to `mark-page'
+  ("C-x C-p"      . modi/copy-buffer-file-name)
+  ;; overriding `C-x <delete>' originally bound to `backward-kill-sentence'
+  ("C-x x"        . modi/delete-current-buffer-file)
+  ("C-x C-r"      . rename-current-buffer-file)
+  ("C-S-t"        . reopen-killed-file) ; mimick reopen-closed-tab in browsers
+  ("C-c 6"        . reopen-killed-file) ; alternative to C-S-t for terminal mode
+  ("C-("          . toggle-between-buffers)
+  ("C-c ("        . toggle-between-buffers) ; alternative to C-( for terminal mode
+  ("C-)"          . modi/kill-buffer-dwim)
+  ("C-c )"        . modi/kill-buffer-dwim) ; alternative to C-) for terminal mode
+  ("C-c 0"        . modi/kill-buffer-dwim)) ; alternative to C-) for terminal mode
+
+(bind-keys
+ ("<f5>"   . revert-buffer)
+ ("C-c 5"  . revert-buffer) ; alternative to f5
+ ("<S-f5>" . modi/revert-all-file-buffers))
+
 
 ;; Highlights changes to the buffer caused by commands
 ;; such as ‘undo’, ‘yank’/’yank-pop’, etc.
@@ -582,12 +725,14 @@ _SPC_ cancel      _o_nly this     _d_elete       _=_ balance
 
 
 ;; Highlight indentation
-(use-package highlight-indentation
+(use-package highlight-indent-guides
   :ensure t
-  :commands (highlight-indentation-mode))
-(set-face-background 'highlight-indentation-face "#e3e3d3")
-(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-
+  :init (setq highlight-indent-guides-method 'fill
+	      highlight-indent-guides-auto-enabled nil)
+  :config
+  (set-face-background 'highlight-indent-guides-odd-face "aquamarine1")
+  (set-face-background 'highlight-indent-guides-even-face "pink1")
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 
 
@@ -597,7 +742,9 @@ _SPC_ cancel      _o_nly this     _d_elete       _=_ balance
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (company-emacs-eclim restart-emacs use-package))))
+ '(package-selected-packages
+   (quote
+    (company-tern temp-mode company-emacs-eclim restart-emacs use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
