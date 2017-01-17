@@ -32,7 +32,8 @@
          ("C-c g s" . magit-status)
          ("C-c g b" . magit-blame)
          ("C-c g l" . magit-log-buffer-file)
-         ("C-c g p" . magit-pull))
+         ("C-c g p" . magit-pull)
+	 ("C-x M-g" . magit-dispatch-popup))
   :config
   ;; Shut up, Magit
   (validate-setq
