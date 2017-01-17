@@ -21,9 +21,9 @@
   # background = #1e1c31
   foreground = #2f4f4f
   foreground_dim = #888888
-  # background = #EEEEEE
-  # background = rgba(28, 28, 28, 0.75)
-  # background = rgba(0, 0, 153, 0.75)
+  # color-theme-andreas
+  background = rgba(0, 0, 153, 0.75)
+  # color-them-snowish
   background = rgb(238,238,238)
   cursor = #B2C1D0
   highlight = #51617d
