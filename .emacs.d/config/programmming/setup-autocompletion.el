@@ -1,7 +1,11 @@
+(use-package company-statistics		; Show me likelier candidates at the top of the list
+  :ensure t)
+
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-init-hook 'company-statistics-mode))
 
 (use-package yasnippet
   :ensure t
