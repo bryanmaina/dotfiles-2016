@@ -19,6 +19,9 @@ export ANDROID_HOME="/opt/android-sdk"
 #export PATH="$PATH:$HOME/.node/bin"
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+export BPATH="$HOME/.linuxbrew/bin:$BPATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 # setting fzf finder
 export FZF_DEFAULT_COMMAND='ag -g ""'

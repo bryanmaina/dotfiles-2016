@@ -1,3 +1,6 @@
+(use-package org
+  :ensure t)
+
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 

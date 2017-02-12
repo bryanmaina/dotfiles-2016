@@ -3,6 +3,8 @@
 	     '("melpa" ."https://melpa.org/packages/") t)
 (add-to-list 'package-archives
 	     '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+	     '("org" . "http://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
@@ -37,7 +39,7 @@
     ("~/gtd/myblog/myblog.org" "~/gtd/resume-tasks.org")))
  '(package-selected-packages
    (quote
-    (company-statistics expand-region iedit multiple-cursors move-text @ micgoline nlinum counsel-projectile pyvenv-mode kanban calfw haskell-mode sclang-snippets sclang-extensions material-theme 0blayout tommyh-theme leuven-theme paper-theme quasi-monochrome-theme minimal-theme github-theme flatland-theme flatland-black-theme sphinx-doc focus-autosave-mode volatile-highlights use-package undo-tree try transpose-frame restart-emacs ng2-mode js3-mode js2-mode hydra highlight-symbol highlight-indent-guides helm flycheck counsel company-tern company-emacs-eclim color-theme ace-window))))
+    (emmet-mode company-web-html org-plus-contrib company-statistics expand-region iedit multiple-cursors move-text @ micgoline nlinum counsel-projectile pyvenv-mode kanban calfw haskell-mode sclang-snippets sclang-extensions material-theme 0blayout tommyh-theme leuven-theme paper-theme quasi-monochrome-theme minimal-theme github-theme flatland-theme flatland-black-theme sphinx-doc focus-autosave-mode volatile-highlights use-package undo-tree try transpose-frame restart-emacs ng2-mode js3-mode js2-mode hydra highlight-symbol highlight-indent-guides helm flycheck counsel company-tern company-emacs-eclim color-theme ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
