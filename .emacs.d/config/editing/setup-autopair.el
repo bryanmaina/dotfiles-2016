@@ -6,6 +6,7 @@
 			 lisp-mode
 			 java-mode
 			 emacs-lisp-mode
+			 js2-mode
 			 cider-mode
 			 org-mode
 			 clojure-mode

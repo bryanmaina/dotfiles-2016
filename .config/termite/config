@@ -16,33 +16,36 @@
   cursor_shape = block
   browser = chromium
 
-[colors]
-cursor = #c5c8c6
-#cursor_foreground = #dcdccc
-foreground = #c5c8c6
-foreground_bold = #c5c8c6
-background = #1d1f21
-
-# 20% background transparency (requires a compositor)
-background = rgba(29, 31, 33, 0.85)
-
-# if unset, will reverse foreground and background
-# highlight = #2f2f2f
-
-# colors from color0 to color254 can be set
-color0 = #1d1f21
-color1 = #cc342b
-color2 = #198844
-color3 = #fba922
-color4 = #3971ed
-color5 = #a36ac7
-color6 = #3971ed
-color7 = #c5c8c6
-color8 = #969896
-color9 = #cc342b
-color10 = #198844
-color11 = #fba922
-color12 = #3971ed
-color13 = #a36ac7
-color14 = #3971ed
+# ----------------------------
+# Contrasty Brightness
+# Version: 2016-02-19
+# https://www.markusweimar.de/
+# ----------------------------
+foreground = #000000
+foreground_bold = #000000
+foreground_dim = #888888
+background = #ffffff
+# black
+color0  = #000000
+color8  = #000000
+# red
+color1  = #cc0000
+color9  = #cc0000
+# green
+color2  = #009a00
+color10 = #009a00
+# yellow
+color3  = #e0b600
+color11 = #e0b600
+# blue
+color4  = #0000ec
+color12 = #0000ec
+# magenta
+color5  = #ca00ca
+color13 = #ca00ca
+# cyan
+color6  = #00a0a0
+color14 = #00a0a0
+# white
+color7  = #cccccc
 color15 = #ffffff
