@@ -9,7 +9,10 @@
 			 cider-mode
 			 org-mode
 			 clojure-mode
-			 python-mode))
+			 python-mode
+			 ng2-ts-mode
+			 ng2-html-mode
+			 typescript-mode))
 
 (defun turn-on-autopair-mode ()
   (autopair-mode 1))

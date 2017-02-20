@@ -4,6 +4,8 @@
   :config
   (counsel-projectile-on))
 
+;; enter this comand in terminal before trying any of these:
+;; sudo updatedb
 (use-package swiper
   :ensure t
   :init (ivy-mode 1)
