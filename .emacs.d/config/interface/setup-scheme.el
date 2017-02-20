@@ -11,3 +11,8 @@
       (set-face-background 'default "unspecified-bg" frame)))
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
+
+(add-hook 'after-make-frame-functions
+	  (lambda (frame)
+  (with-selected-frame frame
+    (set-cursor-color "black"))))
