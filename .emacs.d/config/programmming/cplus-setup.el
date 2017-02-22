@@ -65,6 +65,7 @@
     (add-hook 'c++-mode-hook 'flycheck-mode)
     (add-hook 'c-mode-hook 'flycheck-mode)
     (add-hook 'js2-mode-hook 'flycheck-mode)
+    (add-hook 'json-mode-hook 'flycheck-mode)
     (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))))
 
 ;; Integrating RTags with Flycheck

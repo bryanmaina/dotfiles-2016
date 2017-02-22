@@ -3,7 +3,7 @@
 
 (use-package js2-mode :ensure t :defer t
   :mode (("\\.js\\'" . js2-mode)
-         ("\\.json\\'" . javascript-mode))
+         ("\\.json\\'" . js2-mode))
   :commands js2-mode
   :init (progn
           (setq-default js2-basic-offset 2
@@ -40,5 +40,6 @@ See URL `https://github.com/tensor5/JSLinter'."
 (use-package company-tern
   :ensure
   :config
+  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
   (add-hook 'js-mode-hook (lambda () (tern-mode t)))
   (eval-after-load 'company '(add-to-list 'company-backends 'company-tern)))
