@@ -2,7 +2,10 @@
   :ensure t)
 
 (defvar autopair-modes '(r-mode
+			 c-mode
 			 web-mode
+			 css-mode
+			 html-mode
 			 ruby-mode
 			 lisp-mode
 			 java-mode

@@ -8,7 +8,7 @@
 [[ $- != *i* ]] && return
 
 
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
+# export JAVA_HOME="/usr/lib/jvm/java-8-openjdk/"
 export VISUAL='emacsclient -t -a ""'
 export EDITOR='emacsclient -a ""'
 export BROWSER="/usr/bin/chromium"
@@ -16,6 +16,7 @@ export AWT_TOOLKIT=XToolkit
 export NOTES_DIR="/home/dumy/Documents/Cours_UCL/"
 export XDG_CONFIG_HOME="/home/dumy/.config/"
 export ANDROID_HOME="/opt/android-sdk"
+export RUBY="$(ruby -e 'print Gem.user_dir')/bin:$RUBY"
 #export PATH="$PATH:$HOME/.node/bin"
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules

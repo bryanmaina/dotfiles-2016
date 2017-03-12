@@ -15,7 +15,8 @@
   (rtags-enable-standard-keybindings))
 
 (setq rtags-use-helm t)
-
+(add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
 
 ;;; Source code completion using Irony
 
@@ -44,7 +45,7 @@
   (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
   (setq company-backends (delete 'company-semantic company-backends)))
 
-(define-key c-mode-map [(tab)] 'company-complete)
+                   (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
 
 ;;; Header file completion with company-irony-c-headers
@@ -90,9 +91,48 @@
 (use-package cmake-ide
   :ensure t
   :config
-  (cmake-ide-setup))
+  (progn
+    (cmake-ide-setup)
+    (setq cmake-ide-header-search-other-file nil
+          cmake-ide-header-search-first-including nil
+          cmake-ide-try-unique-compiler-flags-for-headers nil)))
+
+(defun cmake-ide/c-c++-hook ()
+    (with-eval-after-load 'projectile
+      (setq cmake-ide-project-dir (projectile-project-root))
+      (setq cmake-ide-build-dir (concat cmake-ide-project-dir "build")))
+    (cmake-ide-load-db))
+
+(add-hook 'c++-mode-hook #'cmake-ide/c-c++-hook)
 
 ;;; To have cmake-ide automatically create a
 ;; compilation commands file in your project
 ;; root create a .dir-locals.el containing the following:
 ;;   ((nil . ((cmake-ide-build-dir . "<PATH_TO_PROJECT_BUILD_DIRECTORY>"))))
+
+(use-package cmake-font-lock
+  :ensure t
+  :config
+  (progn
+    (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
+    (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)))
+
+(use-package cmake-mode
+  :ensure t
+  :config
+  (progn
+    ; Add cmake listfile names to the mode list.
+    (setq auto-mode-alist
+	  (append
+	   '(("CMakeLists\\.txt\\'" . cmake-mode))
+	   '(("\\.cmake\\'" . cmake-mode))
+	   auto-mode-alist))
+    (autoload 'cmake-mode "~/CMake/Auxiliary/cmake-mode.el" t)))
+
+
+;; If cmake-ide cannot find correct build dir, provide function to solve issue
+(defun set-cmake-ide-build-dir()
+  "Set build dir with CompileCommands.json"
+  (interactive)
+  (let ((dir (read-directory-name "Build dir:")))
+    (setq cmake-ide-build-dir dir)))
