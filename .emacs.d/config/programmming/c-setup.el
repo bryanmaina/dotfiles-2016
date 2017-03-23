@@ -45,4 +45,7 @@
   :config
   (define-key c-mode-base-map (kbd "C-c f") 'disaster))
 
-
+(use-package helm-ctest
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c t") 'helm-ctest))

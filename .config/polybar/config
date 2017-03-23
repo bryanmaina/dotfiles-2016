@@ -14,7 +14,7 @@ margin-bottom = 5
 
 [bar/mainbar]
 ;monitor = ${env:MONITOR:HDMI-1}
-monitor = ${env:MONITOR:LVDS1}
+monitor = ${env:MONITOR:LVDS-1}
 bottom = true
 dock = true
 width = 100%
